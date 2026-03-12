@@ -345,7 +345,7 @@ def Solve2Dframe(model):
     
     # Chuyển sang ma trận thưa
     K = csr_matrix(K)
-    f = csr_matrix(f)
+    # f = csr_matrix(f)
     
     a, r = cfc.spsolveq(K, f, bc_prescr, bcVal)
 
@@ -452,7 +452,7 @@ def Solve2Dtruss(model):
     
     # Chuyển sang ma trận thưa
     K = csr_matrix(K)
-    f = csr_matrix(f)
+    # f = csr_matrix(f)
     
     a, r = cfc.spsolveq(K, f, bc_prescr, bcVal)
     
@@ -543,7 +543,7 @@ def Solve3Dtruss(model):
     
     # Chuyển sang ma trận thưa
     K = csr_matrix(K)
-    f = csr_matrix(f)
+    #f = csr_matrix(f)
     
     a, r = cfc.spsolveq(K, f, bc_prescr, bcVal)
     
@@ -1482,6 +1482,8 @@ def secforce2(ex, ey, es, plotpar=[2, 1], sfac=None, eci=None):
     if eci is None:
         eci = np.arange(0.0, L + L / (Nbr - 1), L / (Nbr - 1)).reshape(Nbr, 1)
 
+    eci = eci.flatten()  # ensure 1D for indexing
+    
     p1 = plotpar[0]
     if p1 == 1:
         line_color = (0, 0, 0)
